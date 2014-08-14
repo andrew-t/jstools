@@ -15,6 +15,7 @@
 				<section>
 					<h1>Compare styles</h1>
 					<p><tt>compare(a, b, ...)</tt> will return an object showing differences in the CSS of two or more elements. It will also outline the elements in the colours specified in <tt>compare.colours</tt>. By default it will not show <tt>border-width</tt>, for example, and include only <tt>border</tt>. Change <tt>compare.all</tt> to configure this.</p>
+					<p>There can be any number of arguments and they can be HTML elements, strings or numbers. If they're strings they'll be treated as element IDs, and if numbers they'll be converted to strings adn treated as element IDs too (this is really because <tt>ids()</tt> assigns numerical IDs and I'm lazy.</p>
 				</section>
 				<section>
 					<h1>Key codes</h1>
