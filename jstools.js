@@ -55,3 +55,7 @@ function ids() {
 			c[i].id = n;
 		}
 }
+
+window.addEventListener('keydown', function(e) {
+	console.log('Key code = ' + e.keyCode);
+});
