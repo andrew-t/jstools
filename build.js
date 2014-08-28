@@ -1,5 +1,26 @@
+var mangle = true,
+	squeeze = true,
+	liftVars = true;
+
 function minify(code) {
-	return code.replace(/\/\/.*$/gm, '').replace(/\s+/gm, ' ');
+	var ast;
+	try {
+		ast = uglify.parser.parse(code);
+	} catch (e) {
+		console.log(e);
+		for (var l = e.line - errContext; l <= e.line + errContext; ++l)
+			console.log(code.split('\n')[l]);
+		throw 'Balls.';
+	}
+
+	if (liftVars)
+		ast = uglify.uglify.ast_lift_variables(ast);
+	if (mangle)
+		ast = uglify.uglify.ast_mangle(ast, { toplevel: false });
+	if (squeeze)
+		ast = uglify.uglify.ast_squeeze(ast);
+
+	return minified = uglify.uglify.gen_code(ast);
 }
 
 var fs = require('fs'),
