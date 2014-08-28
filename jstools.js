@@ -36,7 +36,9 @@ var compare = (function() {
 
 		if (!all)
 			for (var style1 in diffs)
-				for (var style2 in diffs)
+				if (style1 == 'cssText')
+					delete deffs[style1];
+				else for (var style2 in diffs)
 					if (new RegExp('^' + style2 + '.+').test(style1))
 						delete diffs[style1];
 

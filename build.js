@@ -1,6 +1,7 @@
 var mangle = true,
 	squeeze = true,
-	liftVars = true;
+	liftVars = true,
+	uglify = require('./UglifyJS/uglify-js.js');
 
 function minify(code) {
 	var ast;
@@ -20,17 +21,17 @@ function minify(code) {
 	if (squeeze)
 		ast = uglify.uglify.ast_squeeze(ast);
 
-	return minified = uglify.uglify.gen_code(ast);
+	return uglify.uglify.gen_code(ast).toString();
 }
 
 var fs = require('fs'),
-	input = fs.readFileSync('jstools.js').toString(),
+	input = fs.readFileSync('jstools.js', 'utf8'),
 	output = minify(input);
 
 fs.writeFileSync('out.js', output, 'utf8');
 
 function sanitise(code) {
-	return code.replace('"', '&#x22;');
+	return code.replace(/"/g, '&#x22;');
 }
 
 fs.writeFileSync('index.html',
