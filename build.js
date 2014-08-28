@@ -1,11 +1,18 @@
+function minify(code) {
+	return code.replace(/\/\/.*$/gm, '').replace(/\s+/gm, ' ');
+}
+
 var fs = require('fs'),
 	input = fs.readFileSync('jstools.js').toString(),
-	output = input.replace(/\/\/.*$/gm, '')
-				.replace(/\s+/gm, ' ');
+	output = minify(input);
 
 fs.writeFileSync('out.js', output, 'utf8');
 
+function sanitise(code) {
+	return code.replace('"', '&#x22;');
+}
+
 fs.writeFileSync('index.html',
 	fs.readFileSync('template.html').toString()
-		.replace('"#"', '"javascript:' + output.replace('"', '&#x22;') + '"'),
+		.replace('"#"', '"javascript:' + sanitise(minify(output)) + '"'),
 	'utf8');
