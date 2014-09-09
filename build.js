@@ -1,7 +1,9 @@
 var mangle = true,
 	squeeze = true,
 	liftVars = true,
-	uglify = require('./UglifyJS/uglify-js.js');
+	errContext = 10,
+	uglify = require('./UglifyJS/uglify-js.js'),
+	outdir = 'dist';
 
 function minify(code) {
 	var ast;
@@ -25,16 +27,25 @@ function minify(code) {
 }
 
 var fs = require('fs'),
-	input = fs.readFileSync('jstools.js', 'utf8'),
-	output = minify(input);
-
-fs.writeFileSync('out.js', output, 'utf8');
+	html = fs.readFileSync('template.html', 'utf8'),
+	keys = html.match(/href="#[^"]+"/gim).map(function (s) {
+		return s.replace(/href="#(.*)"/, '$1');
+	});
 
 function sanitise(code) {
 	return code.replace(/"/g, '&#x22;');
 }
 
-fs.writeFileSync('index.html',
-	fs.readFileSync('template.html').toString()
-		.replace('"#"', '"javascript:' + sanitise(minify(output)) + '"'),
-	'utf8');
+try {
+	fs.mkdirSync(outdir);
+} catch(e) { }
+
+keys.forEach(function(key) {
+	var input = fs.readFileSync(key + '.js', 'utf8'),
+		output = minify(input);
+	fs.writeFileSync(outdir + '/' + key + '.min.js', output, 'utf8');
+	html = html.replace('href="#' + key + '"',
+		'href="javascript:' + sanitise(minify(output)) + '"');
+});
+
+fs.writeFileSync('index.html', html);

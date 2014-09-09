@@ -5,7 +5,7 @@
 	<body>
 		<article>
 			<h1>jstools</h1>
-			<p>Bookmarklet: <a href="javascript:function ids(){var e,t=document.getElementsByTagName(&#x22;*&#x22;),n=0;for(e=0;t[e];++e)if(!t[e].id){while(document.getElementById(++n));t[e].id=n}}var compare;compare=function(){function e(){var t,n={},r,i=[];for(t=0;t<arguments.length;++t){var s=arguments[t];switch(typeof arguments[t]){case&#x22;object&#x22;:s=arguments[t];break;case&#x22;string&#x22;:case&#x22;number&#x22;:s=document.getElementById(arguments[t]);break;case&#x22;boolean&#x22;:r=arguments[t]}if(r!==undefined)break;i[t]={element:s,style:window.getComputedStyle(s),colour:e.colours[t%e.colours.length]},s.style.outline=e.outline+&#x22; &#x22;+i[t].colour}for(var o in i[0].style)for(t=1;t<i.length;++t)if(i[t].style[o]!=i[0].style[o]){n[o]=i.map(function(e){return e.style[o]});break}if(!r)for(var u in n)for(var a in n)(new RegExp(&#x22;^&#x22;+a+&#x22;.+&#x22;)).test(u)&&delete n[u];return n}return e.colours=[&#x22;red&#x22;,&#x22;blue&#x22;],e.outline=&#x22;3px solid&#x22;,e}(),window.addEventListener(&#x22;keydown&#x22;,function(e){console.log(&#x22;Key code = &#x22;+e.keyCode)})">JSTools</a></p>
+			<p>Bookmarklet: <a href="javascript:function ids(){var e,t=document.getElementsByTagName(&#x22;*&#x22;),n=0;for(e=0;t[e];++e)if(!t[e].id){while(document.getElementById(++n));t[e].id=n}}var compare;compare=function(){function e(){var t,n={},r,i=[];for(t=0;t<arguments.length;++t){var s=arguments[t];switch(typeof arguments[t]){case&#x22;object&#x22;:s=arguments[t];break;case&#x22;string&#x22;:case&#x22;number&#x22;:s=document.getElementById(arguments[t]);break;case&#x22;boolean&#x22;:r=arguments[t]}if(r!==undefined)break;i[t]={element:s,style:window.getComputedStyle(s),colour:e.colours[t%e.colours.length]},s.style.outline=e.outline+&#x22; &#x22;+i[t].colour}for(var o in i[0].style)for(t=1;t<i.length;++t)if(i[t].style[o]!=i[0].style[o]){n[o]=i.map(function(e){return e.style[o]});break}if(!r)for(var u in n)if(u==&#x22;cssText&#x22;)delete deffs[u];else for(var a in n)(new RegExp(&#x22;^&#x22;+a+&#x22;.+&#x22;)).test(u)&&delete n[u];return n}return e.colours=[&#x22;red&#x22;,&#x22;blue&#x22;],e.outline=&#x22;3px solid&#x22;,e}(),window.addEventListener(&#x22;keydown&#x22;,function(e){console.log(&#x22;Key code = &#x22;+e.keyCode)})">JSTools</a></p>
 			<section>
 				<h1>Features</h1>
 				<section>
@@ -22,6 +22,12 @@
 					<p>Pressing any key will log the code to the console.</p>
 				</section>
 			</section>
+		</article>
+		<article>
+			<h1>Other Nonsense</h1>
+			<ol>
+				<li><a href="javascript:function fn(){var e,t,n,r,i,s,o,u;for(e=0;e<c.length;++e){t=&#x22;&#x22;,n=c[e],r=[n.offsetWidth,n.offsetHeight,100,1];for(i=0;i<4;++i){o=strength/r[i];for(u=0;u<4;++u)t+=(t?&#x22;, &#x22;:&#x22;&#x22;)+(Math.random()*o-o/2+(i==u))}s=&#x22;transform &#x22;+time+&#x22;s&#x22;,n.style.transition=s,n.style.mozTransition=&#x22;-moz-&#x22;+s,n.style.webkitTransition=&#x22;-webkit-&#x22;+s,n.style.transform=n.style.mozTransform=n.style.webkitTransform=&#x22;matrix3d(&#x22;+t+&#x22;)&#x22;}}var ivl,strength,time,loop,c;strength=strength?strength*2:.05,time=time||2,loop=loop||!1,c=document.getElementsByTagName(&#x22;*&#x22;),ivl&&clearInterval(ivl),loop&&(ivl=setInterval(fn,time*1e3)),fn()">Warp</a></li>
+			</ol>
 		</article>
 	</body>
 </html>

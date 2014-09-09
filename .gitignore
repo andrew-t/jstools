@@ -8,12 +8,6 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
 # =========================
 # Operating System Files
 # =========================
@@ -37,3 +31,4 @@ Icon
 .Trashes
 
 node_modules/*
+dist/*
