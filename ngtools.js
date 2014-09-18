@@ -9,3 +9,7 @@ function scope(element) {
 	var e = angular.element(element);
 	return e.isolateScope() || e.scope();
 }
+
+function $eval(element, f) {
+	return scope(element).$eval(f);
+}
