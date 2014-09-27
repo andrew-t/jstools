@@ -16,7 +16,7 @@
 	e.style.paddingTop = 'calc(50vh - 0.5em)'
 	e.style.fontSize = (80 / message.length) + 'vw';
 	e.style.color = 'black';
-	e.style.fontFamily = 'sans';
+	e.style.fontFamily = 'sans-serif';
 	body.appendChild(e);
 	e.addEventListener('click', function() {
 		// No real point checking for msRequestFullscreen since this is for OSX:
